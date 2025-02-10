@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public List<Card> ai_hand = new List<Card>();
     public List<Card> discard_pile = new List<Card>();
 
+    publicfloat turn = 1;
+
     private void Awake()
     {
         if (gm != null && gm != this)
@@ -27,7 +29,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Deal;
     }
 
     // Update is called once per frame
@@ -38,12 +40,26 @@ public class GameManager : MonoBehaviour
 
     void Deal()
     {
-
+        Shuffle;
+        for (int i = 0; i < turn; i++)
+        {
+            player_hand.Add(deck[0]);
+            deck.RemoveAt(0);
+            ai_hand.Add(deck[0]);
+            deck.RemoveAt(0);
+        }
+        turn += 1;
     }
 
     void Shuffle()
     {
-
+        for (int i = 0; i < deck.Count; i++)
+        {
+            Card temp = deck[i];
+            int randomIndex = Random.Range(i, deck.Count);
+            deck[i] = deck[randomIndex];
+            deck[randomIndex] = temp;
+        }
     }
 
     void AI_Turn()
