@@ -8,6 +8,12 @@ public class Card : MonoBehaviour
 {
     public Card_data data;
 
+    public string card_name;
+    public string value;
+    public Sprite image;
+    public string card_name_copy;
+    public string value_copy;
+
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI valueText;
     public Image spriteImage;
@@ -17,11 +23,17 @@ public class Card : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nameText.text = data.card_name;
-        valueText.text = data.value;
-        spriteImage.sprite = data.image;
-        nameText_copy.text = data.card_name;
-        valueText_copy.text = data.value;
+        card_name = data.card_name;
+        value = data.value;
+        image = data.image;
+        card_name_copy = data.card_name;
+        value_copy = data.value;
+
+        nameText.text = card_name;
+        valueText.text = value;
+        spriteImage.sprite = image;
+        nameText_copy.text = card_name_copy;
+        valueText_copy.text = value_copy;
     }
 
     // Update is called once per frame
